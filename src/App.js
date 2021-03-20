@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import List from './List';
 import Alert from './Alert';
+import Navbar from './Navbar';
 import { getLocalList, getLocalLists } from './LocalStorage';
 import uniquid from 'uniquid';
-import { FaEdit, FaBars, FaOpencart } from 'react-icons/fa';
+import { FaEdit } from 'react-icons/fa';
 
 function App() {
   const [listName, setListName] = useState('');
@@ -208,21 +209,7 @@ function App() {
 
   return <>
     {alert.show && <Alert {...alert} removeAlert={showAlert} list={list} />}
-    <nav>
-      <div className='nav-header'>
-        <div className='logo-container'>
-          {/* <p>shoplist</p> */}
-          <FaOpencart className='logo-icon' />
-        </div>
-        {
-          lists.length > 0 && (
-            <button className='nav-toggle' onClick={toggleLists}>
-              <FaBars />
-            </button>
-          )
-        }
-      </div>
-    </nav>
+    <Navbar lists={lists} toggleLists={toggleLists} />
     <div className='lists-container' ref={listsContainerRef}>
       <div className='lists' ref={listsRef}>
         {
@@ -234,7 +221,6 @@ function App() {
           }
       </div>
     </div>
-    {/* <h2>shoplist - your shopping companion</h2> */}
     <section className='section-center'>
       {
         isNameEditing
@@ -288,16 +274,16 @@ function App() {
       <div className='shopping-container'>
         <List list={list} removeItem={removeItem} editItem={editItem} />
         <div className='btn-container'>
-          <button className='clear-btn' onClick={() => clearList(list.id)}>
+          <button className='btn' onClick={() => clearList(list.id)}>
             clear items
           </button>
-          <button className='clear-btn' onClick={() => saveList(list.id)}>
+          <button className='btn' onClick={() => saveList(list.id)}>
             save list
           </button>
-          <button className='clear-btn' onClick={() => removeList(list.id)}>
+          <button className='btn' onClick={() => removeList(list.id)}>
             remove list
           </button>
-          <button className='clear-btn' onClick={() => newList(list.id)}>
+          <button className='btn' onClick={() => newList(list.id)}>
             new list
           </button>
         </div>
