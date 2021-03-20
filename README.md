@@ -1,6 +1,6 @@
 # Shoplist
 
-Shopping web companion created using React.js. It's my first project made in this library.
+Shopping web companion created using React.js. It's my first project made in this library for practice.
 
 ## Description
 
